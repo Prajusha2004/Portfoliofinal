@@ -111,19 +111,22 @@ export default function Hero() {
               <div className="rounded-full px-3 py-1 text-[11px] font-semibold
                               bg-black/60 border border-[rgba(255,27,76,0.25)]
                               text-white/75 shadow-[0_0_18px_rgba(255,27,76,.18)]">
-                ping{" "}
-                <span className="text-[var(--red)] animate-pulse">12ms</span>
+                ping <span className="text-[var(--red)] animate-pulse">12ms</span>
               </div>
             </div>
 
             <DeviceFrame title="Prajusha.exe">
               <div className="grid sm:grid-cols-[160px_1fr] items-start gap-5 p-4 sm:p-5">
-                {/* photo (fixed height) */}
-                <div className="relative h-[220px] rounded-2xl overflow-hidden border border-[rgba(255,27,76,0.28)] bg-black self-start">
+                {/* photo (FIXED + centered properly) */}
+                <div
+                  className="relative h-[220px] rounded-2xl overflow-hidden
+                             border border-[rgba(255,27,76,0.28)]
+                             bg-black self-start flex items-center justify-center"
+                >
                   <img
                     src={profileImg}
                     alt="Prajusha"
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover object-center"
                     draggable={false}
                   />
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(300px_200px_at_30%_0%,rgba(255,27,76,0.18),transparent_70%)]" />
@@ -133,13 +136,13 @@ export default function Hero() {
                 <div className="flex flex-col gap-4">
                   <div className="relative rounded-2xl border border-[rgba(255,27,76,0.25)] bg-black/45 p-4 shadow-[0_0_30px_rgba(255,27,76,0.2)] overflow-hidden">
                     {/* tiny moving shimmer */}
-                    <div className="pointer-events-none absolute -inset-10 opacity-[0.14] rotate-12
-                                    bg-[linear-gradient(90deg,transparent,rgba(255,27,76,0.35),transparent)]
-                                    animate-[shine_2.8s_linear_infinite]" />
+                    <div
+                      className="pointer-events-none absolute -inset-10 opacity-[0.14] rotate-12
+                                 bg-[linear-gradient(90deg,transparent,rgba(255,27,76,0.35),transparent)]
+                                 animate-[shine_2.8s_linear_infinite]"
+                    />
 
-                    <p className="text-sm text-white/50 mb-2 tracking-wide">
-                      SYSTEM STATUS
-                    </p>
+                    <p className="text-sm text-white/50 mb-2 tracking-wide">SYSTEM STATUS</p>
 
                     <div className="font-mono text-sm space-y-2">
                       <p className="text-[var(--red)]">▸ boot.sequence.init()</p>
@@ -150,14 +153,11 @@ export default function Hero() {
 
                       <p className="text-white/70">
                         ▸ status:{" "}
-                        <span className="text-white font-semibold">
-                          building, learning, shipping 🚀
-                        </span>
+                        <span className="text-white font-semibold">building, learning, shipping 🚀</span>
                       </p>
 
                       <p className="text-white/50">
-                        ▸ last_commit:{" "}
-                        <span className="text-[var(--red)]">just now</span>
+                        ▸ last_commit: <span className="text-[var(--red)]">just now</span>
                       </p>
                     </div>
                   </div>
@@ -166,7 +166,7 @@ export default function Hero() {
                   <div>
                     <div className="h-px bg-[rgba(255,27,76,0.16)] mb-3" />
                     <p className="text-xs text-white/55">
-                      Tip: hover & move mouse — the “device” tilts in 3D.
+                      Tip: hover &amp; move mouse — the “device” tilts in 3D.
                     </p>
                   </div>
                 </div>
