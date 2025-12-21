@@ -1,4 +1,4 @@
-import { Code, Layers, Wrench } from 'lucide-react';
+import { Code, Layers, Wrench, Globe } from 'lucide-react';
 
 interface SkillCategory {
   title: string;
@@ -23,8 +23,14 @@ const skillCategories: SkillCategory[] = [
   {
     title: 'Tools & Technologies',
     icon: <Wrench className="w-6 h-6" />,
-    skills: ['Git', 'GitHub', 'VS Code', 'npm', 'Webpack', 'ESLint'],
+    skills: ['Git', 'GitHub', 'VS Code', 'npm', 'Docker', 'Firebase'],
     color: 'green',
+  },
+  {
+    title: 'Languages',
+    icon: <Globe className="w-6 h-6" />,
+    skills: ['English', 'Hindi', 'Bengali'],
+    color: 'orange',
   },
 ];
 
@@ -49,7 +55,7 @@ export default function Skills() {
           A comprehensive toolkit built through hands-on projects and continuous learning
         </p>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-4 gap-8">
           {skillCategories.map((category, index) => {
             const colors = getColorClasses(category.color);
             return (

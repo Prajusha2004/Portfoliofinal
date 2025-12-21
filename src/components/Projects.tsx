@@ -19,6 +19,30 @@ const projects: Project[] = [
     githubUrl: 'https://github.com/Prajusha2004/customer_reviews_clustering',
     learnings: 'Implemented data cleaning, text preprocessing, vectorization techniques, and unsupervised learning algorithms. Gained experience with NLP pipelines and extracting meaningful patterns from unstructured data',
   },
+  {
+    name: 'CareerCraft',
+    description: 'A comprehensive career development platform designed to help users navigate their professional journey',
+    purpose: 'Empowering individuals with tools and resources for career planning and skill development',
+    techStack: ['React', 'TypeScript', 'Node.js', 'Firebase', 'Tailwind CSS'],
+    githubUrl: 'https://github.com/Prajusha2004/CareerCraft',
+    learnings: 'Developed full-stack web application with user authentication, real-time database management, and responsive UI design. Learned about creating scalable career development features and user engagement strategies',
+  },
+  {
+    name: 'Heart Diseases Prediction',
+    description: 'Machine learning model that predicts the likelihood of heart diseases using medical data and advanced algorithms',
+    purpose: 'Providing accurate risk assessment for early detection and prevention of heart diseases',
+    techStack: ['Python', 'Machine Learning', 'Scikit-learn', 'Pandas', 'Medical Data Analysis'],
+    githubUrl: 'https://github.com/Prajusha2004/Heart_Diseases',
+    learnings: 'Implemented predictive modeling, data normalization, feature selection, and model evaluation. Gained expertise in healthcare data processing and building reliable ML prediction systems',
+  },
+  {
+    name: 'AuraSafe',
+    description: 'A comprehensive safety application with real-time features designed to enhance personal security',
+    purpose: 'Empowering users with emergency assistance and location-based safety features',
+    techStack: ['React', 'TypeScript', 'Node.js', 'GPS Integration', 'Real-time Communication'],
+    githubUrl: 'https://github.com/Prajusha2004/AuraSafe',
+    learnings: 'Implemented real-time location tracking, emergency contact systems, and privacy-focused development practices. Learned about geolocation APIs, instant messaging, and building secure safety-critical applications',
+  },
 ];
 
 export default function Projects() {
@@ -32,7 +56,7 @@ export default function Projects() {
           A selection of projects that showcase my development skills and problem-solving abilities
         </p>
 
-        <div className="grid md:grid-cols-1 gap-8 max-w-2xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <div
               key={index}
