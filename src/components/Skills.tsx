@@ -1,4 +1,4 @@
-import { Code, Layers, Wrench, Database } from 'lucide-react';
+import { Code, Layers, Wrench } from 'lucide-react';
 
 interface SkillCategory {
   title: string;
@@ -26,12 +26,6 @@ const skillCategories: SkillCategory[] = [
     skills: ['Git', 'GitHub', 'VS Code', 'npm', 'Webpack', 'ESLint'],
     color: 'green',
   },
-  {
-    title: 'Databases & Backend',
-    icon: <Database className="w-6 h-6" />,
-    skills: ['PostgreSQL', 'MongoDB', 'RESTful APIs', 'Supabase'],
-    color: 'orange',
-  },
 ];
 
 const getColorClasses = (color: string) => {
@@ -55,7 +49,7 @@ export default function Skills() {
           A comprehensive toolkit built through hands-on projects and continuous learning
         </p>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-3 gap-8">
           {skillCategories.map((category, index) => {
             const colors = getColorClasses(category.color);
             return (
