@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Projects from "./components/Projects";
+import Resume from "./components/Resume";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -11,16 +12,37 @@ function App() {
   const glowRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    // Skip expensive mouse tracking on touch devices
+    const isCoarse =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(pointer: coarse)").matches;
+
+    if (isCoarse) return;
+
+    let raf = 0;
+
     const onMove = (e: MouseEvent) => {
       const el = glowRef.current;
       if (!el) return;
-      el.style.left = `${e.clientX}px`;
-      el.style.top = `${e.clientY}px`;
+
+      // Throttle with rAF for smoothness
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        el.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
+      });
     };
 
     window.addEventListener("mousemove", onMove);
-    return () => window.removeEventListener("mousemove", onMove);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("mousemove", onMove);
+    };
   }, []);
+
+  const Separator = () => (
+    <div className="mx-auto my-10 h-px w-[90%] max-w-6xl bg-[rgba(255,27,76,0.18)] shadow-[0_0_18px_rgba(255,27,76,0.15)]" />
+  );
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[var(--bg0)] cyber-grid scanlines noise">
@@ -30,9 +52,11 @@ function App() {
       {/* Mouse-follow glow */}
       <div
         ref={glowRef}
-        className="pointer-events-none fixed z-[1] h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
+        className="pointer-events-none fixed z-[1] h-[560px] w-[560px] rounded-full blur-3xl will-change-transform"
         style={{
-          background: "radial-gradient(circle, rgba(255,27,76,0.16), transparent 60%)",
+          transform: "translate3d(50vw, 40vh, 0) translate(-50%, -50%)",
+          background:
+            "radial-gradient(circle, rgba(255,27,76,0.16), transparent 60%)",
         }}
       />
 
@@ -47,16 +71,19 @@ function App() {
       <div className="relative z-10">
         <Hero />
 
-        <div className="mx-auto my-10 h-px w-[90%] max-w-6xl bg-[rgba(255,27,76,0.18)] shadow-[0_0_18px_rgba(255,27,76,0.15)]" />
+        <Separator />
         <About />
 
-        <div className="mx-auto my-10 h-px w-[90%] max-w-6xl bg-[rgba(255,27,76,0.18)] shadow-[0_0_18px_rgba(255,27,76,0.15)]" />
+        <Separator />
         <Projects />
 
-        <div className="mx-auto my-10 h-px w-[90%] max-w-6xl bg-[rgba(255,27,76,0.18)] shadow-[0_0_18px_rgba(255,27,76,0.15)]" />
+        <Separator />
+        <Resume />
+
+        <Separator />
         <Skills />
 
-        <div className="mx-auto my-10 h-px w-[90%] max-w-6xl bg-[rgba(255,27,76,0.18)] shadow-[0_0_18px_rgba(255,27,76,0.15)]" />
+        <Separator />
         <Contact />
 
         <Footer />

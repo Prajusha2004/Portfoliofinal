@@ -10,14 +10,23 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 py-20">
-      {/* glow */}
-      <div className="absolute left-1/2 top-[18%] h-[680px] w-[680px] -translate-x-1/2 rounded-full bg-[rgba(255,27,76,0.14)] blur-3xl" />
+    <section className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden">
+      {/* HERO background vibes */}
+      <div className="pointer-events-none absolute inset-0">
+        {/* big glow */}
+        <div className="absolute left-1/2 top-[18%] h-[680px] w-[680px] -translate-x-1/2 rounded-full bg-[rgba(255,27,76,0.14)] blur-3xl" />
+
+        {/* subtle animated grid */}
+        <div className="absolute inset-0 opacity-[0.18] bg-[linear-gradient(to_right,rgba(255,27,76,0.09)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,27,76,0.07)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(circle_at_50%_35%,black,transparent_72%)]" />
+
+        {/* scanlines */}
+        <div className="absolute inset-0 opacity-[0.08] mix-blend-overlay bg-[repeating-linear-gradient(to_bottom,rgba(255,255,255,.18),rgba(255,255,255,.18)_1px,transparent_1px,transparent_5px)]" />
+      </div>
 
       <div className="relative z-10 max-w-6xl w-full grid lg:grid-cols-2 gap-10 items-center">
         {/* LEFT: text */}
         <div className="text-center lg:text-left">
-          <p className="text-[var(--red)]/80 tracking-[0.25em] text-xs font-semibold mb-4">
+          <p className="text-[var(--red)]/80 tracking-[0.35em] text-xs font-semibold mb-4">
             CYBER PORTFOLIO
           </p>
 
@@ -38,9 +47,14 @@ export default function Hero() {
             {chips.map((c) => (
               <span
                 key={c}
-                className="px-3 py-1 rounded-full text-sm bg-[rgba(255,27,76,0.10)] text-[var(--red)]
+                className="px-3 py-1 rounded-full text-sm
+                           bg-[rgba(255,27,76,0.10)] text-[var(--red)]
                            border border-[rgba(255,27,76,0.30)]
-                           shadow-[0_0_10px_rgba(255,27,76,.16)]"
+                           shadow-[0_0_10px_rgba(255,27,76,.16)]
+                           transition-all duration-300
+                           hover:bg-[rgba(255,27,76,0.14)]
+                           hover:shadow-[0_0_18px_rgba(255,27,76,.28)]
+                           hover:-translate-y-[1px]"
               >
                 {c}
               </span>
@@ -51,7 +65,8 @@ export default function Hero() {
           <div className="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start">
             <button
               onClick={scrollToProjects}
-              className="group btn-cyber spark px-7 py-4 rounded-xl font-semibold text-white inline-flex items-center gap-2"
+              className="group btn-cyber spark px-7 py-4 rounded-xl font-semibold text-white inline-flex items-center gap-2
+                         transition-transform duration-300 hover:-translate-y-[1px]"
             >
               View Projects
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -62,7 +77,8 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               className="px-7 py-4 rounded-xl border border-white/15 bg-white/5 text-white/85 font-semibold
-                         hover:bg-white/10 transition inline-flex items-center gap-2"
+                         hover:bg-white/10 transition inline-flex items-center gap-2
+                         hover:-translate-y-[1px] duration-300"
             >
               <Linkedin className="w-5 h-5 text-[var(--red)]" />
               LinkedIn
@@ -73,7 +89,8 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               className="px-7 py-4 rounded-xl border border-white/15 bg-white/5 text-white/85 font-semibold
-                         hover:bg-white/10 transition inline-flex items-center gap-2"
+                         hover:bg-white/10 transition inline-flex items-center gap-2
+                         hover:-translate-y-[1px] duration-300"
             >
               <Github className="w-5 h-5 text-[var(--red)]" />
               GitHub
@@ -83,10 +100,25 @@ export default function Hero() {
 
         {/* RIGHT: device frame */}
         <div className="flex justify-center lg:justify-end">
-          <div className="w-full max-w-xl">
+          <div className="w-full max-w-xl relative">
+            {/* tiny HUD badges */}
+            <div className="pointer-events-none absolute -top-3 right-3 z-20 flex gap-2">
+              <div className="rounded-full px-3 py-1 text-[11px] font-semibold
+                              bg-black/60 border border-[rgba(255,27,76,0.25)]
+                              text-white/75 shadow-[0_0_18px_rgba(255,27,76,.18)]">
+                <span className="text-[var(--red)]">●</span> LIVE
+              </div>
+              <div className="rounded-full px-3 py-1 text-[11px] font-semibold
+                              bg-black/60 border border-[rgba(255,27,76,0.25)]
+                              text-white/75 shadow-[0_0_18px_rgba(255,27,76,.18)]">
+                ping{" "}
+                <span className="text-[var(--red)] animate-pulse">12ms</span>
+              </div>
+            </div>
+
             <DeviceFrame title="Prajusha.exe">
               <div className="grid sm:grid-cols-[160px_1fr] items-start gap-5 p-4 sm:p-5">
-                {/* photo (FIXED HEIGHT so it can't stretch) */}
+                {/* photo (fixed height) */}
                 <div className="relative h-[220px] rounded-2xl overflow-hidden border border-[rgba(255,27,76,0.28)] bg-black self-start">
                   <img
                     src={profileImg}
@@ -99,7 +131,12 @@ export default function Hero() {
 
                 {/* SYSTEM STATUS TERMINAL */}
                 <div className="flex flex-col gap-4">
-                  <div className="rounded-2xl border border-[rgba(255,27,76,0.25)] bg-black/45 p-4 shadow-[0_0_30px_rgba(255,27,76,0.2)]">
+                  <div className="relative rounded-2xl border border-[rgba(255,27,76,0.25)] bg-black/45 p-4 shadow-[0_0_30px_rgba(255,27,76,0.2)] overflow-hidden">
+                    {/* tiny moving shimmer */}
+                    <div className="pointer-events-none absolute -inset-10 opacity-[0.14] rotate-12
+                                    bg-[linear-gradient(90deg,transparent,rgba(255,27,76,0.35),transparent)]
+                                    animate-[shine_2.8s_linear_infinite]" />
+
                     <p className="text-sm text-white/50 mb-2 tracking-wide">
                       SYSTEM STATUS
                     </p>
@@ -138,6 +175,16 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+      {/* keyframes for shimmer (Tailwind arbitrary animation) */}
+      <style>
+        {`
+          @keyframes shine {
+            0% { transform: translateX(-30%); }
+            100% { transform: translateX(30%); }
+          }
+        `}
+      </style>
     </section>
   );
 }

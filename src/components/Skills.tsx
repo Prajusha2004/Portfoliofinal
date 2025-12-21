@@ -1,10 +1,10 @@
-import React from "react";
 import { Code, Layers, Wrench, Globe } from "lucide-react";
 
 interface SkillCategory {
   title: string;
   icon: React.ReactNode;
   skills: string[];
+  meter: number; // 0..100 for a small visual bar
 }
 
 const skillCategories: SkillCategory[] = [
@@ -12,21 +12,25 @@ const skillCategories: SkillCategory[] = [
     title: "Languages",
     icon: <Code className="w-6 h-6" />,
     skills: ["TypeScript", "JavaScript", "HTML5", "CSS3", "Python", "Java"],
+    meter: 82,
   },
   {
     title: "Frameworks & Libraries",
     icon: <Layers className="w-6 h-6" />,
     skills: ["React", "Node.js", "Express", "Tailwind CSS", "Vite"],
+    meter: 78,
   },
   {
     title: "Tools & Technologies",
     icon: <Wrench className="w-6 h-6" />,
     skills: ["Git", "GitHub", "VS Code", "npm", "Docker", "Firebase"],
+    meter: 74,
   },
   {
-    title: "Languages",
+    title: "Spoken Languages",
     icon: <Globe className="w-6 h-6" />,
     skills: ["English", "Hindi", "Bengali"],
+    meter: 90,
   },
 ];
 
@@ -45,11 +49,31 @@ export default function Skills() {
           {skillCategories.map((category, index) => (
             <div
               key={index}
-              className="tilt-card border-neon bg-black/35 backdrop-blur-xl rounded-2xl overflow-hidden"
+              className="tilt-card border-neon bg-black/35 backdrop-blur-xl rounded-2xl overflow-hidden
+                         group relative transition-all duration-300
+                         hover:-translate-y-1 hover:shadow-[0_0_60px_rgba(255,27,76,0.22)]"
             >
-              <div className="p-6">
+              {/* hover highlight */}
+              <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 bg-[radial-gradient(520px_220px_at_20%_0%,rgba(255,27,76,0.16),transparent_65%)]" />
+                <div
+                  className="absolute -inset-20 rotate-12 opacity-[0.14]
+                             bg-[linear-gradient(90deg,transparent,rgba(255,27,76,0.45),transparent)]
+                             animate-[shine_3.2s_linear_infinite]"
+                />
+              </div>
+
+              <div className="relative p-6">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-[rgba(255,27,76,0.15)] text-[var(--red)] shadow-[0_0_16px_rgba(255,27,76,.4)] border border-[rgba(255,27,76,0.35)]">
+                  <div
+                    className="w-12 h-12 rounded-lg flex items-center justify-center
+                               bg-[rgba(255,27,76,0.15)] text-[var(--red)]
+                               shadow-[0_0_16px_rgba(255,27,76,.4)]
+                               border border-[rgba(255,27,76,0.35)]
+                               transition-all duration-300
+                               group-hover:shadow-[0_0_22px_rgba(255,27,76,.55)]
+                               group-hover:bg-[rgba(255,27,76,0.18)]"
+                  >
                     {category.icon}
                   </div>
 
@@ -66,12 +90,27 @@ export default function Skills() {
                                  bg-[rgba(255,27,76,0.10)] text-[var(--red)]
                                  border border-[rgba(255,27,76,0.30)]
                                  shadow-[0_0_10px_rgba(255,27,76,.18)]
+                                 transition-all duration-300
                                  hover:bg-[rgba(255,27,76,0.16)]
-                                 transition"
+                                 hover:shadow-[0_0_16px_rgba(255,27,76,.26)]
+                                 hover:-translate-y-[1px]"
                     >
                       {skill}
                     </span>
                   ))}
+                </div>
+
+                {/* small “meter” for visual depth */}
+                <div className="mt-6">
+                  <div className="h-1.5 w-full rounded-full bg-white/5 border border-white/10 overflow-hidden">
+                    <div
+                      className="h-full rounded-full bg-[rgba(255,27,76,0.7)] shadow-[0_0_18px_rgba(255,27,76,.35)]"
+                      style={{ width: `${category.meter}%` }}
+                    />
+                  </div>
+                  <p className="mt-2 text-xs text-white/45 font-mono">
+                    signal: <span className="text-[var(--red)]">{category.meter}%</span>
+                  </p>
                 </div>
               </div>
             </div>
@@ -85,6 +124,16 @@ export default function Skills() {
           </p>
         </div>
       </div>
+
+      {/* shimmer keyframes */}
+      <style>
+        {`
+          @keyframes shine {
+            0% { transform: translateX(-30%); }
+            100% { transform: translateX(30%); }
+          }
+        `}
+      </style>
     </section>
   );
 }
