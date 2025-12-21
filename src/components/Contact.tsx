@@ -32,31 +32,49 @@ export default function Contact() {
   };
 
   return (
-    <section className="py-20 px-6 bg-slate-800 text-white">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">
-          Get In Touch
+    <section className="py-20 px-6 bg-black text-white relative overflow-hidden">
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-red-600 blur-3xl rounded-full"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-red-600 blur-3xl rounded-full"></div>
+      </div>
+
+      <div className="max-w-6xl mx-auto relative z-10">
+        <div className="text-center mb-4">
+          <div className="inline-block px-4 py-2 border border-red-600 bg-red-600/10 mb-6">
+            <p className="text-red-500 font-mono text-sm tracking-widest">COMMUNICATION_PROTOCOL</p>
+          </div>
+        </div>
+
+        <h2 className="text-5xl md:text-6xl font-black mb-4 text-center tracking-tighter">
+          <span className="text-white">GET_IN</span>
+          <br />
+          <span className="text-red-600">TOUCH</span>
         </h2>
-        <p className="text-slate-400 text-center mb-12 max-w-2xl mx-auto">
-          I'm currently open to internship opportunities and would love to connect!
-          Feel free to reach out through any of the channels below.
+        <p className="text-gray-400 text-center mb-16 max-w-2xl mx-auto font-mono">
+          {"// I'm open to internship opportunities. Connect through any channel."}
         </p>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-8">
           <div>
-            <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
+            <h3 className="text-xl font-black mb-8 flex items-center gap-2">
+              <span className="w-8 h-8 border-2 border-red-600 flex items-center justify-center">
+                <span className="w-4 h-4 bg-red-600"></span>
+              </span>
+              CONTACT_MATRIX
+            </h3>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               <a
                 href="mailto:prajusha2004@gmail.com"
-                className="flex items-center gap-4 p-4 bg-slate-900 rounded-lg border border-slate-700 hover:border-blue-500 transition-all duration-300 group"
+                className="group flex items-center gap-4 p-4 bg-gray-950 border-2 border-red-600 relative overflow-hidden hover:bg-red-600/20 transition-all duration-300"
               >
-                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Mail className="w-6 h-6" />
+                <div className="absolute inset-0 bg-red-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 opacity-10"></div>
+                <div className="w-10 h-10 border-2 border-red-600 flex items-center justify-center flex-shrink-0 relative z-10 group-hover:bg-red-600 transition-colors">
+                  <Mail className="w-5 h-5" />
                 </div>
-                <div>
-                  <p className="text-sm text-slate-400">Email</p>
-                  <p className="font-medium group-hover:text-blue-400 transition-colors">
+                <div className="relative z-10">
+                  <p className="text-xs text-red-500 font-mono">MAIL</p>
+                  <p className="font-mono text-sm group-hover:text-red-400 transition-colors">
                     prajusha2004@gmail.com
                   </p>
                 </div>
@@ -66,14 +84,15 @@ export default function Contact() {
                 href="https://www.linkedin.com/in/prajushadhar"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 bg-slate-900 rounded-lg border border-slate-700 hover:border-cyan-500 transition-all duration-300 group"
+                className="group flex items-center gap-4 p-4 bg-gray-950 border-2 border-red-600 relative overflow-hidden hover:bg-red-600/20 transition-all duration-300"
               >
-                <div className="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Linkedin className="w-6 h-6" />
+                <div className="absolute inset-0 bg-red-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 opacity-10"></div>
+                <div className="w-10 h-10 border-2 border-red-600 flex items-center justify-center flex-shrink-0 relative z-10 group-hover:bg-red-600 transition-colors">
+                  <Linkedin className="w-5 h-5" />
                 </div>
-                <div>
-                  <p className="text-sm text-slate-400">LinkedIn</p>
-                  <p className="font-medium group-hover:text-cyan-400 transition-colors">
+                <div className="relative z-10">
+                  <p className="text-xs text-red-500 font-mono">NETWORK</p>
+                  <p className="font-mono text-sm group-hover:text-red-400 transition-colors">
                     linkedin.com/in/prajushadhar
                   </p>
                 </div>
@@ -83,14 +102,15 @@ export default function Contact() {
                 href="https://github.com/Prajusha2004"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 bg-slate-900 rounded-lg border border-slate-700 hover:border-green-500 transition-all duration-300 group"
+                className="group flex items-center gap-4 p-4 bg-gray-950 border-2 border-red-600 relative overflow-hidden hover:bg-red-600/20 transition-all duration-300"
               >
-                <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Github className="w-6 h-6" />
+                <div className="absolute inset-0 bg-red-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 opacity-10"></div>
+                <div className="w-10 h-10 border-2 border-red-600 flex items-center justify-center flex-shrink-0 relative z-10 group-hover:bg-red-600 transition-colors">
+                  <Github className="w-5 h-5" />
                 </div>
-                <div>
-                  <p className="text-sm text-slate-400">GitHub</p>
-                  <p className="font-medium group-hover:text-green-400 transition-colors">
+                <div className="relative z-10">
+                  <p className="text-xs text-red-500 font-mono">CODE</p>
+                  <p className="font-mono text-sm group-hover:text-red-400 transition-colors">
                     github.com/Prajusha2004
                   </p>
                 </div>
@@ -99,12 +119,17 @@ export default function Contact() {
           </div>
 
           <div>
-            <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
+            <h3 className="text-xl font-black mb-8 flex items-center gap-2">
+              <span className="w-8 h-8 border-2 border-red-600 flex items-center justify-center">
+                <span className="w-4 h-4 bg-red-600"></span>
+              </span>
+              SEND_MESSAGE
+            </h3>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-slate-400 mb-2">
-                  Name
+                <label htmlFor="name" className="block text-xs font-mono text-red-500 mb-2 tracking-widest">
+                  {"[NAME]"}
                 </label>
                 <input
                   type="text"
@@ -113,14 +138,14 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg focus:outline-none focus:border-blue-500 transition-colors text-white"
-                  placeholder="Your name"
+                  className="w-full px-4 py-3 bg-gray-950 border-2 border-gray-800 focus:border-red-600 text-white font-mono text-sm transition-colors focus:outline-none focus:shadow-lg focus:shadow-red-600/50"
+                  placeholder="> Enter your name"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-slate-400 mb-2">
-                  Email
+                <label htmlFor="email" className="block text-xs font-mono text-red-500 mb-2 tracking-widest">
+                  {"[EMAIL]"}
                 </label>
                 <input
                   type="email"
@@ -129,14 +154,14 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg focus:outline-none focus:border-blue-500 transition-colors text-white"
-                  placeholder="your.email@example.com"
+                  className="w-full px-4 py-3 bg-gray-950 border-2 border-gray-800 focus:border-red-600 text-white font-mono text-sm transition-colors focus:outline-none focus:shadow-lg focus:shadow-red-600/50"
+                  placeholder="> your@email.com"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-slate-400 mb-2">
-                  Message
+                <label htmlFor="message" className="block text-xs font-mono text-red-500 mb-2 tracking-widest">
+                  {"[MESSAGE]"}
                 </label>
                 <textarea
                   id="message"
@@ -145,29 +170,32 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg focus:outline-none focus:border-blue-500 transition-colors text-white resize-none"
-                  placeholder="Your message..."
+                  className="w-full px-4 py-3 bg-gray-950 border-2 border-gray-800 focus:border-red-600 text-white font-mono text-sm transition-colors focus:outline-none focus:shadow-lg focus:shadow-red-600/50 resize-none"
+                  placeholder="> Type your message..."
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-700 text-white font-medium rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-blue-500/50 disabled:cursor-not-allowed"
+                className="w-full px-6 py-4 bg-red-600 hover:bg-red-700 disabled:bg-gray-800 text-black font-black uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 disabled:cursor-not-allowed relative overflow-hidden group shadow-lg hover:shadow-red-600/50"
               >
-                {isSubmitting ? (
-                  'Sending...'
-                ) : (
-                  <>
-                    <Send className="w-5 h-5" />
-                    Send Message
-                  </>
-                )}
+                <div className="absolute inset-0 bg-white transform -translate-x-full group-hover:translate-x-full transition-transform duration-500 opacity-20"></div>
+                <div className="relative z-10 flex items-center gap-2">
+                  {isSubmitting ? (
+                    'TRANSMITTING...'
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      TRANSMIT
+                    </>
+                  )}
+                </div>
               </button>
 
               {submitStatus === 'success' && (
-                <p className="text-green-400 text-center text-sm">
-                  Message sent successfully! I'll get back to you soon.
+                <p className="text-red-400 text-center text-sm font-mono">
+                  {"// SIGNAL RECEIVED. STANDBY FOR RESPONSE."}
                 </p>
               )}
             </form>
