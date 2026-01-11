@@ -1,4 +1,4 @@
-import {FileText } from "lucide-react";
+import { FileText } from "lucide-react";
 import resumePdf from "../assets/Prajusha_Dhar_Resume.pdf";
 
 export default function Resume() {
@@ -11,14 +11,17 @@ export default function Resume() {
 
         <p className="text-white/65 max-w-2xl mx-auto mb-10">
           Frontend-focused software engineering student with hands-on experience
-          in React, TypeScript, UI/UX design, and hackathon-based development.
+          in React and TypeScript, along with proven experience as a Team Lead,
+          Event Organizer, and Community Lead in hackathon-based and technical
+          events.
         </p>
 
-        {/* resume card */}
-        <div className="mx-auto max-w-xl rounded-2xl border border-[rgba(255,27,76,0.25)]
-                        bg-black/45 backdrop-blur-xl p-6
-                        shadow-[0_0_40px_rgba(255,27,76,0.18)]">
-
+        {/* Resume Card */}
+        <div
+          className="mx-auto max-w-xl rounded-2xl border border-[rgba(255,27,76,0.25)]
+                         bg-black/45 backdrop-blur-xl p-6
+                         shadow-[0_0_40px_rgba(255,27,76,0.18)]"
+        >
           <div className="flex items-center justify-center gap-3 mb-4">
             <FileText className="w-6 h-6 text-[var(--red)]" />
             <p className="text-white font-semibold">
@@ -27,7 +30,7 @@ export default function Resume() {
           </div>
 
           <p className="text-sm text-white/60 mb-6">
-            B.Tech IT • React • TypeScript • UI/UX • Hackathon Organizer
+            B.Tech IT • React • TypeScript • Team Lead • Event Organizer • Community Lead
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center">
@@ -44,14 +47,13 @@ export default function Resume() {
             </a>
 
             <a
-  href={resumePdf}
-  download
-  className="px-6 py-3 rounded-xl btn-cyber spark
-             text-white font-semibold inline-flex items-center gap-2"
->
-  Download PDF
-</a>
-
+              href={resumePdf}
+              download
+              className="px-6 py-3 rounded-xl btn-cyber spark
+                         text-white font-semibold inline-flex items-center gap-2"
+            >
+              Download PDF
+            </a>
           </div>
         </div>
       </div>
