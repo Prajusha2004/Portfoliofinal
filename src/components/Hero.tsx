@@ -166,7 +166,7 @@ export default function Hero() {
                   <div>
                     <div className="h-px bg-[rgba(255,27,76,0.16)] mb-3" />
                     <p className="text-xs text-white/55">
-                      Tip: hover &amp; move mouse — the “device” tilts in 3D.
+                     
                     </p>
                   </div>
                 </div>
