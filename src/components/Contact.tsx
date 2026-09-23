@@ -1,30 +1,71 @@
-import { Mail, Linkedin, Github, Send } from 'lucide-react';
-import { useState } from 'react';
+import { Mail, Linkedin, Github, Send } from "lucide-react";
+import { useState } from "react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     setIsSubmitting(true);
-    setSubmitStatus('idle');
+    setSubmitStatus("idle");
 
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "492bb0e0-61fb-4b9a-b855-854b2c7a9373",
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `Portfolio Contact - ${formData.name}`,
+          from_name: "Prajusha Dhar Portfolio",
+        }),
+      });
 
-    setSubmitStatus('success');
-    setIsSubmitting(false);
-    setFormData({ name: '', email: '', message: '' });
+      const result = await response.json();
 
-    setTimeout(() => setSubmitStatus('idle'), 3000);
+      if (result.success) {
+        setSubmitStatus("success");
+
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
+
+        setTimeout(() => {
+          setSubmitStatus("idle");
+        }, 5000);
+      } else {
+        console.error("Web3Forms error:", result);
+        setSubmitStatus("error");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -41,7 +82,9 @@ export default function Contact() {
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-4">
           <div className="inline-block px-4 py-2 border border-red-600 bg-red-600/10 mb-6">
-            <p className="text-red-500 font-mono text-sm tracking-widest">COMMUNICATION_PROTOCOL</p>
+            <p className="text-red-500 font-mono text-sm tracking-widest">
+              COMMUNICATION_PROTOCOL
+            </p>
           </div>
         </div>
 
@@ -50,6 +93,7 @@ export default function Contact() {
           <br />
           <span className="text-red-600">TOUCH</span>
         </h2>
+
         <p className="text-gray-400 text-center mb-16 max-w-2xl mx-auto font-mono">
           {"// I'm open to internship opportunities. Connect through any channel."}
         </p>
@@ -69,9 +113,11 @@ export default function Contact() {
                 className="group flex items-center gap-4 p-4 bg-gray-950 border-2 border-red-600 relative overflow-hidden hover:bg-red-600/20 transition-all duration-300"
               >
                 <div className="absolute inset-0 bg-red-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 opacity-10"></div>
+
                 <div className="w-10 h-10 border-2 border-red-600 flex items-center justify-center flex-shrink-0 relative z-10 group-hover:bg-red-600 transition-colors">
                   <Mail className="w-5 h-5" />
                 </div>
+
                 <div className="relative z-10">
                   <p className="text-xs text-red-500 font-mono">MAIL</p>
                   <p className="font-mono text-sm group-hover:text-red-400 transition-colors">
@@ -87,9 +133,11 @@ export default function Contact() {
                 className="group flex items-center gap-4 p-4 bg-gray-950 border-2 border-red-600 relative overflow-hidden hover:bg-red-600/20 transition-all duration-300"
               >
                 <div className="absolute inset-0 bg-red-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 opacity-10"></div>
+
                 <div className="w-10 h-10 border-2 border-red-600 flex items-center justify-center flex-shrink-0 relative z-10 group-hover:bg-red-600 transition-colors">
                   <Linkedin className="w-5 h-5" />
                 </div>
+
                 <div className="relative z-10">
                   <p className="text-xs text-red-500 font-mono">NETWORK</p>
                   <p className="font-mono text-sm group-hover:text-red-400 transition-colors">
@@ -105,9 +153,11 @@ export default function Contact() {
                 className="group flex items-center gap-4 p-4 bg-gray-950 border-2 border-red-600 relative overflow-hidden hover:bg-red-600/20 transition-all duration-300"
               >
                 <div className="absolute inset-0 bg-red-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 opacity-10"></div>
+
                 <div className="w-10 h-10 border-2 border-red-600 flex items-center justify-center flex-shrink-0 relative z-10 group-hover:bg-red-600 transition-colors">
                   <Github className="w-5 h-5" />
                 </div>
+
                 <div className="relative z-10">
                   <p className="text-xs text-red-500 font-mono">CODE</p>
                   <p className="font-mono text-sm group-hover:text-red-400 transition-colors">
@@ -128,9 +178,13 @@ export default function Contact() {
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="name" className="block text-xs font-mono text-red-500 mb-2 tracking-widest">
-                  {"[NAME]"}
+                <label
+                  htmlFor="name"
+                  className="block text-xs font-mono text-red-500 mb-2 tracking-widest"
+                >
+                  [NAME]
                 </label>
+
                 <input
                   type="text"
                   id="name"
@@ -144,9 +198,13 @@ export default function Contact() {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-xs font-mono text-red-500 mb-2 tracking-widest">
-                  {"[EMAIL]"}
+                <label
+                  htmlFor="email"
+                  className="block text-xs font-mono text-red-500 mb-2 tracking-widest"
+                >
+                  [EMAIL]
                 </label>
+
                 <input
                   type="email"
                   id="email"
@@ -160,9 +218,13 @@ export default function Contact() {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-xs font-mono text-red-500 mb-2 tracking-widest">
-                  {"[MESSAGE]"}
+                <label
+                  htmlFor="message"
+                  className="block text-xs font-mono text-red-500 mb-2 tracking-widest"
+                >
+                  [MESSAGE]
                 </label>
+
                 <textarea
                   id="message"
                   name="message"
@@ -181,9 +243,10 @@ export default function Contact() {
                 className="w-full px-6 py-4 bg-red-600 hover:bg-red-700 disabled:bg-gray-800 text-black font-black uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 disabled:cursor-not-allowed relative overflow-hidden group shadow-lg hover:shadow-red-600/50"
               >
                 <div className="absolute inset-0 bg-white transform -translate-x-full group-hover:translate-x-full transition-transform duration-500 opacity-20"></div>
+
                 <div className="relative z-10 flex items-center gap-2">
                   {isSubmitting ? (
-                    'TRANSMITTING...'
+                    "TRANSMITTING..."
                   ) : (
                     <>
                       <Send className="w-5 h-5" />
@@ -193,9 +256,15 @@ export default function Contact() {
                 </div>
               </button>
 
-              {submitStatus === 'success' && (
+              {submitStatus === "success" && (
                 <p className="text-red-400 text-center text-sm font-mono">
-                  {"// SIGNAL RECEIVED. STANDBY FOR RESPONSE."}
+                  {"// SIGNAL RECEIVED. MESSAGE DELIVERED."}
+                </p>
+              )}
+
+              {submitStatus === "error" && (
+                <p className="text-red-500 text-center text-sm font-mono">
+                  {"// TRANSMISSION FAILED. PLEASE TRY AGAIN."}
                 </p>
               )}
             </form>
