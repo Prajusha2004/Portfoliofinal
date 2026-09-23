@@ -12,25 +12,28 @@ interface Project {
 
 const projects: Project[] = [
   {
-    name: "Customer Reviews Clustering",
-    description:
-      "NLP-powered system that transforms customer feedback into actionable insights using text preprocessing, TF-IDF vectorization, and clustering algorithms.",
-    purpose:
-      "Grouping similar customer opinions to identify trends and patterns in product feedback.",
-    techStack: [
-      "Python",
-      "NLP",
-      "TF-IDF",
-      "K-Means",
-      "Pandas",
-      "NumPy",
-      "Scikit-learn",
-    ],
-    githubUrl:
-      "https://github.com/Prajusha2004/customer_reviews_clustering",
-    learnings:
-      "Implemented text preprocessing, feature extraction, TF-IDF vectorization, and unsupervised learning using K-Means clustering. Gained experience in processing unstructured text data and extracting meaningful patterns from customer feedback.",
-  },
+  name: "HOMOSENSYS AI Assistant",
+  description:
+    "Full-stack AI-assisted human activity monitoring system designed for real-time experiment tracking, safety validation, and protocol compliance in microgravity environments.",
+  purpose:
+    "Monitoring human activities, validating experiment sequences, and providing real-time safety guidance through a mission-control dashboard.",
+  techStack: [
+    "Python",
+    "FastAPI",
+    "React",
+    "TypeScript",
+    "Vite",
+    "Tailwind CSS",
+    "Computer Vision",
+    "FSM",
+    "WebSockets",
+    "PostgreSQL",
+  ],
+  githubUrl:
+    "https://github.com/rudra00434/HOMOSENSYS-AI-Assistant",
+  learnings:
+    "Worked on a full-stack AI and computer-vision system involving human activity recognition, deterministic finite-state-machine validation, real-time WebSocket telemetry, safety alerts, grounded AI assistance, and mission-control visualization.",
+},
 
   {
     name: "TaskFlow",
