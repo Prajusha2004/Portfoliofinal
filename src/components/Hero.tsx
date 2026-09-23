@@ -35,7 +35,7 @@ export default function Hero() {
           </h1>
 
           <p className="mt-5 text-xl md:text-2xl text-white/75">
-            Software Engineering Student & Developer
+            Emerging Full Stack Developer
           </p>
 
           <p className="mt-4 text-white/55 max-w-xl">

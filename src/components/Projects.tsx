@@ -14,46 +14,86 @@ const projects: Project[] = [
   {
     name: "Customer Reviews Clustering",
     description:
-      "NLP-powered system that transforms customer feedback into actionable insights using machine learning and clustering algorithms",
+      "NLP-powered system that transforms customer feedback into actionable insights using text preprocessing, TF-IDF vectorization, and clustering algorithms.",
     purpose:
-      "Grouping similar customer opinions to identify trends and patterns in product feedback",
-    techStack: ["Python", "NLP", "Machine Learning", "K-Means", "Pandas", "Scikit-learn"],
-    githubUrl: "https://github.com/Prajusha2004/customer_reviews_clustering",
+      "Grouping similar customer opinions to identify trends and patterns in product feedback.",
+    techStack: [
+      "Python",
+      "NLP",
+      "TF-IDF",
+      "K-Means",
+      "Pandas",
+      "NumPy",
+      "Scikit-learn",
+    ],
+    githubUrl:
+      "https://github.com/Prajusha2004/customer_reviews_clustering",
     learnings:
-      "Implemented data cleaning, text preprocessing, vectorization techniques, and unsupervised learning algorithms. Gained experience with NLP pipelines and extracting meaningful patterns from unstructured data",
+      "Implemented text preprocessing, feature extraction, TF-IDF vectorization, and unsupervised learning using K-Means clustering. Gained experience in processing unstructured text data and extracting meaningful patterns from customer feedback.",
   },
+
   {
-    name: "CareerCraft",
+    name: "TaskFlow",
     description:
-      "A comprehensive career development platform designed to help users navigate their professional journey",
+      "Full-stack task management application built with Spring Boot and React, featuring secure authentication and personalized task management.",
     purpose:
-      "Empowering individuals with tools and resources for career planning and skill development",
-    techStack: ["React", "TypeScript", "Node.js", "Firebase", "Tailwind CSS"],
-    githubUrl: "https://github.com/Prajusha2004/CareerCraft",
+      "Helping users organize, track, and manage their tasks with priorities, statuses, and due dates.",
+    techStack: [
+      "Java",
+      "Spring Boot",
+      "Spring Security",
+      "JWT",
+      "JPA/Hibernate",
+      "React",
+      "React Router",
+      "Axios",
+      "MySQL",
+      "Maven",
+    ],
+    githubUrl:
+      "https://github.com/Prajusha2004/taskflow",
     learnings:
-      "Developed full-stack web application with user authentication, real-time database management, and responsive UI design. Learned about creating scalable career development features and user engagement strategies",
+      "Built RESTful APIs using Spring Boot and implemented JWT-based authentication with Spring Security and BCrypt. Worked with JPA/Hibernate for relational data modeling, CRUD operations, validation, exception handling, and integration of a React frontend with a secured backend.",
   },
+
   {
-    name: "Heart Diseases Prediction",
+    name: "Sales ETL Dashboard",
     description:
-      "Machine learning model that predicts the likelihood of heart diseases using medical data and advanced algorithms",
+      "Java desktop application that extracts, cleans, transforms, and analyzes sales data from CSV files through an ETL pipeline.",
     purpose:
-      "Providing accurate risk assessment for early detection and prevention of heart diseases",
-    techStack: ["Python", "Machine Learning", "Scikit-learn", "Pandas", "Medical Data Analysis"],
-    githubUrl: "https://github.com/Prajusha2004/Heart_Diseases",
+      "Converting raw sales data into structured revenue insights by region and product.",
+    techStack: [
+      "Java",
+      "Java Swing",
+      "File I/O",
+      "Java Streams",
+      "CSV",
+      "ETL",
+    ],
+    githubUrl:
+      "https://github.com/Prajusha2004/sales-etl-dashboard",
     learnings:
-      "Implemented predictive modeling, data normalization, feature selection, and model evaluation. Gained expertise in healthcare data processing and building reliable ML prediction systems",
+      "Implemented an ETL workflow using core Java, handled missing and invalid records, logged skipped data, aggregated revenue using Java Streams, built a Swing-based interface, and implemented CSV report export.",
   },
+
   {
     name: "AuraSafe",
     description:
-      "A comprehensive safety application with real-time features designed to enhance personal security",
+      "AI-powered personal safety platform designed to provide emergency assistance and location-based safety features.",
     purpose:
-      "Empowering users with emergency assistance and location-based safety features",
-    techStack: ["React", "TypeScript", "Node.js", "GPS Integration", "Real-time Communication"],
-    githubUrl: "https://github.com/Prajusha2004/AuraSafe",
+      "Helping users access emergency assistance and safety tools through a responsive web application.",
+    techStack: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Geolocation",
+      "Firebase",
+    ],
+    githubUrl:
+      "https://github.com/Prajusha2004/AuraSafe",
     learnings:
-      "Implemented real-time location tracking, emergency contact systems, and privacy-focused development practices. Learned about geolocation APIs, instant messaging, and building secure safety-critical applications",
+      "Developed a responsive safety-focused web application and worked with geolocation, real-time workflows, interactive interfaces, and user-centered features for solving real-world safety problems.",
   },
 ];
 
@@ -64,8 +104,10 @@ export default function Projects() {
         <h2 className="text-4xl md:text-5xl font-extrabold neon-red mb-4 text-center">
           Featured Projects
         </h2>
+
         <p className="text-white/55 text-center mb-12 max-w-2xl mx-auto">
-          A selection of projects that showcase my development skills and problem-solving abilities
+          A selection of projects that showcase my development skills and
+          problem-solving abilities
         </p>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -105,11 +147,19 @@ export default function Projects() {
                   </div>
                 </div>
 
-                <p className="text-white/60 mb-3 italic">{project.purpose}</p>
-                <p className="text-white/75 mb-5">{project.description}</p>
+                <p className="text-white/60 mb-3 italic">
+                  {project.purpose}
+                </p>
+
+                <p className="text-white/75 mb-5">
+                  {project.description}
+                </p>
 
                 <div className="mb-6">
-                  <h4 className="text-sm font-semibold text-white/55 mb-2">Tech Stack:</h4>
+                  <h4 className="text-sm font-semibold text-white/55 mb-2">
+                    Tech Stack:
+                  </h4>
+
                   <div className="flex flex-wrap gap-2">
                     {project.techStack.map((tech, techIndex) => (
                       <span
@@ -123,8 +173,13 @@ export default function Projects() {
                 </div>
 
                 <div className="pt-5 border-t border-[rgba(255,27,76,0.18)]">
-                  <h4 className="text-sm font-semibold text-white/55 mb-2">Key Learnings:</h4>
-                  <p className="text-white/70 text-sm leading-relaxed">{project.learnings}</p>
+                  <h4 className="text-sm font-semibold text-white/55 mb-2">
+                    Key Learnings:
+                  </h4>
+
+                  <p className="text-white/70 text-sm leading-relaxed">
+                    {project.learnings}
+                  </p>
                 </div>
               </div>
             </div>

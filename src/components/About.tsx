@@ -45,9 +45,11 @@ export default function About() {
 
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-lg text-white/70 leading-relaxed mb-6">
-            I'm an engineering student building scalable full-stack apps using React and TypeScript. My work focuses on clean,
-            maintainable code and real-world problem solving. Featured projects live on GitHub and demonstrate my ability to ship
-            production-ready features.
+           I’m an emerging full-stack developer with a strong foundation in Java and experience developing web applications using Spring Boot, React, TypeScript, and SQL. I focus on building clean, maintainable, and scalable solutions while applying strong problem-solving and software development practices.
+
+My experience includes developing REST APIs, implementing secure application workflows, working with databases, and building responsive frontend interfaces. I’m continuously strengthening my expertise in backend and full-stack development through hands-on projects.
+
+I’m currently seeking opportunities to apply my technical skills in a professional environment, contribute to meaningful software projects, and continue growing as a full-stack developer.
           </p>
 
           <p className="text-lg text-white/70 leading-relaxed">

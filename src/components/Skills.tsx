@@ -1,36 +1,70 @@
-import { Code, Layers, Wrench, Globe } from "lucide-react";
+import { Code, Layers, Database, Wrench } from "lucide-react";
 
 interface SkillCategory {
   title: string;
   icon: React.ReactNode;
   skills: string[];
-  meter: number; // 0..100 for a small visual bar
+  meter: number;
 }
 
 const skillCategories: SkillCategory[] = [
   {
     title: "Languages",
     icon: <Code className="w-6 h-6" />,
-    skills: ["TypeScript", "JavaScript", "HTML5", "CSS3", "Python", "Java"],
+    skills: [
+      "Java",
+      "JavaScript",
+      "TypeScript",
+      "HTML5",
+      "CSS3",
+      "Python",
+    ],
+    meter: 88,
+  },
+
+  {
+    title: "Backend & Frameworks",
+    icon: <Layers className="w-6 h-6" />,
+    skills: [
+      "Spring Boot",
+      "Spring Security",
+      "JPA / Hibernate",
+      "REST APIs",
+      "React",
+      "Vite",
+      "Tailwind CSS",
+    ],
+    meter: 84,
+  },
+
+  {
+    title: "Database & Development",
+    icon: <Database className="w-6 h-6" />,
+    skills: [
+      "MySQL",
+      "DBMS",
+      "SQL",
+      "Git",
+      "GitHub",
+      "Maven",
+      "PostgreSQL (Learning)",
+    ],
     meter: 82,
   },
-  {
-    title: "Frameworks & Libraries",
-    icon: <Layers className="w-6 h-6" />,
-    skills: ["React", "Node.js", "Express", "Tailwind CSS", "Vite"],
-    meter: 78,
-  },
+
   {
     title: "Tools & Technologies",
     icon: <Wrench className="w-6 h-6" />,
-    skills: ["Git", "GitHub", "VS Code", "npm", "Docker", "Firebase"],
-    meter: 74,
-  },
-  {
-    title: "Spoken Languages",
-    icon: <Globe className="w-6 h-6" />,
-    skills: ["English", "Hindi", "Bengali"],
-    meter: 90,
+    skills: [
+      "VS Code",
+      "NetBeans",
+      "Git",
+      "GitHub",
+      "npm",
+      "Express.js (Learning)",
+      "Firebase",
+    ],
+    meter: 80,
   },
 ];
 
@@ -41,11 +75,13 @@ export default function Skills() {
         <h2 className="text-4xl md:text-5xl font-extrabold neon-red mb-4 text-center">
           Skills &amp; Technologies
         </h2>
+
         <p className="text-white/55 text-center mb-12 max-w-2xl mx-auto">
-          A comprehensive toolkit built through hands-on projects and continuous learning
+          A technical skill set developed through hands-on projects,
+          problem-solving, and continuous learning.
         </p>
 
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {skillCategories.map((category, index) => (
             <div
               key={index}
@@ -53,9 +89,10 @@ export default function Skills() {
                          group relative transition-all duration-300
                          hover:-translate-y-1 hover:shadow-[0_0_60px_rgba(255,27,76,0.22)]"
             >
-              {/* hover highlight */}
+              {/* Hover highlight */}
               <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute inset-0 bg-[radial-gradient(520px_220px_at_20%_0%,rgba(255,27,76,0.16),transparent_65%)]" />
+
                 <div
                   className="absolute -inset-20 rotate-12 opacity-[0.14]
                              bg-[linear-gradient(90deg,transparent,rgba(255,27,76,0.45),transparent)]
@@ -100,7 +137,6 @@ export default function Skills() {
                   ))}
                 </div>
 
-                {/* small “meter” for visual depth */}
                 <div className="mt-6">
                   <div className="h-1.5 w-full rounded-full bg-white/5 border border-white/10 overflow-hidden">
                     <div
@@ -108,8 +144,12 @@ export default function Skills() {
                       style={{ width: `${category.meter}%` }}
                     />
                   </div>
+
                   <p className="mt-2 text-xs text-white/45 font-mono">
-                    signal: <span className="text-[var(--red)]">{category.meter}%</span>
+                    signal:{" "}
+                    <span className="text-[var(--red)]">
+                      {category.meter}%
+                    </span>
                   </p>
                 </div>
               </div>
@@ -119,18 +159,24 @@ export default function Skills() {
 
         <div className="mt-12 text-center">
           <p className="text-white/55 max-w-2xl mx-auto leading-relaxed">
-            I'm always expanding my skill set and staying current with industry trends.
-            Currently exploring advanced React patterns, performance optimization, and cloud deployment strategies.
+            I’m continuously strengthening my Java and full-stack development
+            skills while expanding my knowledge of backend technologies,
+            databases, and modern web development practices.
           </p>
         </div>
       </div>
 
-      {/* shimmer keyframes */}
+      {/* Shimmer keyframes */}
       <style>
         {`
           @keyframes shine {
-            0% { transform: translateX(-30%); }
-            100% { transform: translateX(30%); }
+            0% {
+              transform: translateX(-30%);
+            }
+
+            100% {
+              transform: translateX(30%);
+            }
           }
         `}
       </style>
