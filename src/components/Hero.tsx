@@ -39,7 +39,7 @@ export default function Hero() {
           </p>
 
           <p className="mt-4 text-white/55 max-w-xl">
-            Building full-stack applications with React, TypeScript, and modern web technologies — with a bias for shipping.
+            Building full-stack applications with React, TypeScript, and modern web technologies - with a bias for shipping.
           </p>
 
           {/* chips */}
